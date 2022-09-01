@@ -1,6 +1,7 @@
 package com.yequ.common.interfaces.outbond.login;
 
-import com.yequ.common.interfaces.outbond.dto.ResoultDto;
+import com.yequ.common.interfaces.outbond.dto.LoginResultDto;
+import com.yequ.common.interfaces.outbond.dto.ResultDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -13,8 +14,8 @@ import io.swagger.annotations.ApiOperation;
 public interface ILogin {
 
     @ApiOperation("/admin/login")
-    ResoultDto<String> login (UserVO vo);
+    LoginResultDto login (UserVO vo);
 
     @ApiOperation("/admin/logout")
-    ResoultDto<String> logout (UserVO vo);
+    ResultDto<String> logout (UserVO vo);
 }

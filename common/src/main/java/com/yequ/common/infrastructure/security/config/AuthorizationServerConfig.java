@@ -4,9 +4,12 @@ import com.google.common.base.Predicates;
 import com.yequ.common.utils.CommonConstant;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -32,10 +35,22 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //super.configure(http);
         http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeRequests().antMatchers("/swagger-ui.html","/v2/**","/swagger-resources/**").anonymous()
+                .and().authorizeRequests()
+                .antMatchers("/swagger-ui.html","/v2/**","/swagger-resources/**","/webjars/**","/admin/login").anonymous()
                 .anyRequest().authenticated();
     }
+    //    声明加密方式
+    @Bean
+    public PasswordEncoder getPasswordEncoder(){
+        return  new BCryptPasswordEncoder();
+    }
+    //    认证管理器
+    @Bean
+    public AuthenticationManager getAuthenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
 
+    //    注入swagger实例对象bean
     @Bean
     public Docket webApiConfig(){
         return new Docket(DocumentationType.SWAGGER_2).groupName("webApi").apiInfo(webApiInfo()).select().paths(Predicates.not(PathSelectors.regex("/error*"))).build().globalOperationParameters(getParameterList());
@@ -53,4 +68,6 @@ public class AuthorizationServerConfig extends WebSecurityConfigurerAdapter {
         parameters.add(clientIdTickt.build());
         return parameters;
     }
+
+
 }

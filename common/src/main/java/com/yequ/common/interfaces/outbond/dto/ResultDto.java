@@ -12,7 +12,7 @@ import lombok.Data;
  **/
 @Data
 @ApiModel(value = "返回的结果集")
-public class ResoultDto<T> extends BaseDto{
+public class ResultDto<T> extends BaseDto{
 
     @ApiModelProperty(value = "返回的业务数据")
     private T obj;

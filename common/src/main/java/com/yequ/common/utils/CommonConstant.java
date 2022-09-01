@@ -11,9 +11,9 @@ public interface CommonConstant {
 
     int STATUS_ERROR = 201;
 
-    String USER_NAME = "zst";
+    String USER_NAME = "qishuihe";
 
-    String PASS_WORD = "123";
+    String PASS_WORD = "qishuihe";
 
     String TOKEN_STR = "token";
 }
