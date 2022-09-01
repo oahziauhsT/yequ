@@ -16,7 +16,7 @@ import java.util.List;
  * @create: 2022-09-01
  **/
 @Service
-public class UserdetailServiceImpl implements UserDetailsService {
+public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LoginUserVO loginUserVO = new LoginUserVO();

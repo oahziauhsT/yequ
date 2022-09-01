@@ -29,31 +29,31 @@ public class LoginUserVO implements UserDetails, Serializable {
 
     @Override
     public String getPassword() {
-        return null;
+        return userVO.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return userVO.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
