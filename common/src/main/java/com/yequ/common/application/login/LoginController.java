@@ -4,8 +4,10 @@ import com.yequ.common.domain.service.UserBusService;
 import com.yequ.common.interfaces.outbond.dto.LoginResultDto;
 import com.yequ.common.interfaces.outbond.dto.ResultDto;
 import com.yequ.common.interfaces.outbond.login.ILogin;
+import com.yequ.common.interfaces.outbond.login.RegisteredUserVO;
 import com.yequ.common.interfaces.outbond.login.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -29,9 +31,19 @@ public class LoginController implements ILogin {
 
     @Override
     @PostMapping("/logout")
+    @PreAuthorize("hasAnyAuthority('/admin/logout')")
     public ResultDto<String> logout(@RequestBody UserVO vo) {
         ResultDto<String> resultDto = new ResultDto<>();
-        resultDto.setObj(vo.toString());
+        resultDto.setObj("退出成功");
+        return resultDto;
+    }
+
+    @Override
+    @PostMapping("/addUser")
+    @PreAuthorize(" hasAnyAuthority('/admin/addUser') || hasRole('admin')")
+    public ResultDto<String> addUser(@RequestBody RegisteredUserVO vo) {
+        ResultDto<String> resultDto = new ResultDto<>();
+        resultDto.setObj("注册成功");
         return resultDto;
     }
 }
