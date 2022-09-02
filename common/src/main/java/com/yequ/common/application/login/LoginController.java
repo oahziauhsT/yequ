@@ -31,7 +31,7 @@ public class LoginController implements ILogin {
 
     @Override
     @PostMapping("/logout")
-    @PreAuthorize("hasAnyAuthority('/admin/logout')")
+    @PreAuthorize("hasAnyAuthority('/admin/logout1')")
     public ResultDto<String> logout(@RequestBody UserVO vo) {
         ResultDto<String> resultDto = new ResultDto<>();
         resultDto.setObj("退出成功");
