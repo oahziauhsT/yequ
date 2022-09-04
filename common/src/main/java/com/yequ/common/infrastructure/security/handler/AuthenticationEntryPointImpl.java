@@ -23,7 +23,7 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         BaseDto baseDto = new BaseDto();
         baseDto.setCode(HttpStatus.UNAUTHORIZED.value());
-        baseDto.setMessage("认证失败");
+        baseDto.setMessage("认证失败,请重新登录");
         WebResponseUtils.renderResponse(httpServletResponse, JSONObject.toJSONString(baseDto));
     }
 }

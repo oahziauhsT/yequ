@@ -1,6 +1,7 @@
 package com.yequ.common.domain.service;
 
 import com.yequ.common.interfaces.outbond.dto.LoginResultDto;
+import com.yequ.common.interfaces.outbond.dto.ResultDto;
 import com.yequ.common.interfaces.outbond.login.UserVO;
 
 /**
@@ -11,6 +12,6 @@ public interface UserBusService {
 
     LoginResultDto login(UserVO userVO);
 
-    LoginResultDto logout(UserVO userVO);
+    ResultDto logout(UserVO userVO);
 
 }

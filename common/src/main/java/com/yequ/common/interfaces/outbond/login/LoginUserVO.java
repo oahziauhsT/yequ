@@ -1,5 +1,6 @@
 package com.yequ.common.interfaces.outbond.login;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,11 +21,15 @@ public class LoginUserVO implements UserDetails, Serializable {
 
     private static final long serialVersionUID = -6227641935791416189L;
 
+    private Long id;
+
     private UserVO userVO;
+
 
     private List<String> permissions;
 
     @Override
+    @JSONField(serialize = false)
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return permissions.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
