@@ -1,6 +1,8 @@
 package com.yequ.common.application.login;
 
 import com.yequ.common.domain.service.UserBusService;
+import com.yequ.common.interfaces.outbond.login.RoleUserVO;
+import com.yequ.common.interfaces.outbond.login.RoleVO;
 import com.yequ.common.interfaces.outbond.dto.LoginResultDto;
 import com.yequ.common.interfaces.outbond.dto.ResultDto;
 import com.yequ.common.interfaces.outbond.login.ILogin;
@@ -37,11 +39,21 @@ public class LoginController implements ILogin {
     }
 
     @Override
-    @PostMapping("/addUser")
+    @PostMapping("/modfiyUser")
     @PreAuthorize(" hasAnyAuthority('/admin/addUser') || hasRole('admin')")
-    public ResultDto<String> addUser(@RequestBody RegisteredUserVO vo) {
-        ResultDto<String> resultDto = new ResultDto<>();
-        resultDto.setObj("注册成功");
-        return resultDto;
+    public ResultDto<RegisteredUserVO> modfiyUser(@RequestBody RegisteredUserVO vo) {
+        return userBusService.modfiyUser(vo);
+    }
+
+    @Override
+    @PostMapping("/modfiyRole")
+    public ResultDto<RoleVO> modfiyRole(@RequestBody RoleVO roleVO) {
+        return userBusService.modfiyRole(roleVO);
+    }
+
+    @Override
+    @PostMapping("/modfiyRoleUser")
+    public ResultDto<RoleUserVO> modfiyRoleUser(@RequestBody RoleUserVO roleUserVO) {
+        return userBusService.modfiyRoleUser(roleUserVO);
     }
 }

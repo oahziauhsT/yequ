@@ -70,7 +70,7 @@ public class JWTSecurityFilter extends OncePerRequestFilter {
 
                 //第二种
                 loginUserVO = JSONObject.parseObject(s,LoginUserVO.class);
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginUserVO.getUserVO(),null,loginUserVO.getAuthorities());
+                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginUserVO,null,loginUserVO.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
 

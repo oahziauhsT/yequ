@@ -37,3 +37,6 @@ redis-config:
     blockWhenExhausted: true
     #是否启用pool的jmx管理功能, 默认true
     jmxEnabled: true
+logging:
+  level:
+    com.yequ.common.domain.service.user.mapper : debug

@@ -1,5 +1,6 @@
 package com.yequ.common.base;
 
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,24 +19,30 @@ public class BaseEntity implements Serializable {
     /**
      * 数据库唯一标识
      */
+    @TableId(value = "id",type = IdType.ASSIGN_ID)
+    @TableField(fill = FieldFill.INSERT)
     Long id;
 
     /**
      * 创建者
      */
-    String  createBy;
+    @TableField(fill = FieldFill.INSERT)
+    Long  createBy;
     /**
      * 创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
     Date createDate;
     /**
      * 更新者
      */
-    String  updateBy;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    Long  updateBy;
 
     /**
      * 更新时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     Date   updateDate;
 
     /**
@@ -45,6 +52,7 @@ public class BaseEntity implements Serializable {
     /**
      * 租户编码
      */
+    @TableField(fill = FieldFill.INSERT)
     String  tenant;
 
 

@@ -19,6 +19,13 @@ public interface ILogin {
     @ApiOperation("/admin/logout")
     ResultDto<String> logout (UserVO vo);
 
-    @ApiOperation("/admin/addUser")
-    ResultDto<String> addUser (RegisteredUserVO vo);
+    @ApiOperation("/admin/modfiyUser")
+    ResultDto<RegisteredUserVO> modfiyUser (RegisteredUserVO vo);
+
+    @ApiOperation("/admin/modfiyRole")
+    ResultDto<RoleVO> modfiyRole(RoleVO roleVO);
+
+    @ApiOperation("/admin/modfiyRoleUser")
+    ResultDto<RoleUserVO> modfiyRoleUser(RoleUserVO roleUserVO);
+
 }
