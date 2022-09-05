@@ -5,6 +5,7 @@ import com.yequ.common.interfaces.outbond.dto.ResultPageDto;
 import com.yequ.common.interfaces.outbond.login.*;
 import com.yequ.common.interfaces.outbond.dto.LoginResultDto;
 import com.yequ.common.interfaces.outbond.dto.ResultDto;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/admin")
+@Api(tags = "用戶登录权限相关服务")
 public class LoginController implements ILogin {
 
     @Autowired
@@ -61,22 +63,26 @@ public class LoginController implements ILogin {
     }
 
     @Override
-    public ResultPageDto<RoleVO> queryRole(QueryPageVO<RoleVO> roleVO) {
+    @PostMapping("/queryRole")
+    public ResultPageDto<RoleVO> queryRole(@RequestBody QueryPageVO<RoleVO> roleVO) {
         return userBusService.queryRole(roleVO);
     }
 
     @Override
-    public ResultPageDto<PermissionVO> queryPermission(QueryPageVO<PermissionVO> permissionVO) {
+    @PostMapping("/queryPermission")
+    public ResultPageDto<PermissionVO> queryPermission(@RequestBody QueryPageVO<PermissionVO> permissionVO) {
         return userBusService.queryPermission(permissionVO);
     }
 
     @Override
-    public ResultDto<RolePermissionVO> modfiyRolePermission(RolePermissionVO rolePermissionVO) {
+    @PostMapping("/modfiyRolePermission")
+    public ResultDto<RolePermissionVO> modfiyRolePermission(@RequestBody RolePermissionVO rolePermissionVO) {
         return userBusService.modfiyRolePermission(rolePermissionVO);
     }
 
     @Override
-    public ResultDto<PermissionVO> modfiyPermission(PermissionVO permissionVO) {
+    @PostMapping("/modfiyPermission")
+    public ResultDto<PermissionVO> modfiyPermission(@RequestBody PermissionVO permissionVO) {
         return userBusService.modfiyPermission(permissionVO);
     }
 

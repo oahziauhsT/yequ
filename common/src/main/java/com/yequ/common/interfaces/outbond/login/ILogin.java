@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiOperation;
  * @author: zhaost
  * @create: 2022-08-30
  **/
-@Api("登录接口")
+@Api(tags = "登录接口")
 public interface ILogin {
 
     @ApiOperation("/admin/login")
