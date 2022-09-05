@@ -1,13 +1,10 @@
 package com.yequ.common.application.login;
 
 import com.yequ.common.domain.service.UserBusService;
-import com.yequ.common.interfaces.outbond.login.RoleUserVO;
-import com.yequ.common.interfaces.outbond.login.RoleVO;
+import com.yequ.common.interfaces.outbond.dto.ResultPageDto;
+import com.yequ.common.interfaces.outbond.login.*;
 import com.yequ.common.interfaces.outbond.dto.LoginResultDto;
 import com.yequ.common.interfaces.outbond.dto.ResultDto;
-import com.yequ.common.interfaces.outbond.login.ILogin;
-import com.yequ.common.interfaces.outbond.login.RegisteredUserVO;
-import com.yequ.common.interfaces.outbond.login.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -56,4 +53,31 @@ public class LoginController implements ILogin {
     public ResultDto<RoleUserVO> modfiyRoleUser(@RequestBody RoleUserVO roleUserVO) {
         return userBusService.modfiyRoleUser(roleUserVO);
     }
+
+    @Override
+    @PostMapping("/queryUser")
+    public ResultPageDto<RegisteredUserVO> queryUser(@RequestBody QueryPageVO<RegisteredUserVO> vo) {
+        return userBusService.queryUser(vo);
+    }
+
+    @Override
+    public ResultPageDto<RoleVO> queryRole(QueryPageVO<RoleVO> roleVO) {
+        return userBusService.queryRole(roleVO);
+    }
+
+    @Override
+    public ResultPageDto<PermissionVO> queryPermission(QueryPageVO<PermissionVO> permissionVO) {
+        return userBusService.queryPermission(permissionVO);
+    }
+
+    @Override
+    public ResultDto<RolePermissionVO> modfiyRolePermission(RolePermissionVO rolePermissionVO) {
+        return userBusService.modfiyRolePermission(rolePermissionVO);
+    }
+
+    @Override
+    public ResultDto<PermissionVO> modfiyPermission(PermissionVO permissionVO) {
+        return userBusService.modfiyPermission(permissionVO);
+    }
+
 }

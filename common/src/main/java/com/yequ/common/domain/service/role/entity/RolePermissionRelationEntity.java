@@ -1,6 +1,7 @@
 package com.yequ.common.domain.service.role.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.yequ.common.base.BaseEntity;
 import lombok.Data;
 
 /**
@@ -10,7 +11,7 @@ import lombok.Data;
  **/
 @Data
 @TableName("sys_role_permission_relation_t")
-public class RolePermissionRelationEntity {
+public class RolePermissionRelationEntity extends BaseEntity {
 
     private Long roleId;
 

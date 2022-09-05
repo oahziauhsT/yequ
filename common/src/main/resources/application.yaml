@@ -40,3 +40,8 @@ redis-config:
 logging:
   level:
     com.yequ.common.domain.service.user.mapper : debug
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: enable
+      logic-delete-value: 1
