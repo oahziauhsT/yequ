@@ -45,3 +45,6 @@ mybatis-plus:
     db-config:
       logic-delete-field: enable
       logic-delete-value: 1
+yequ:
+  common:
+    hostPath: D:\workspace\uploadFile
