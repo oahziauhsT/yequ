@@ -30,6 +30,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,6 +63,9 @@ public class UserBusServiceImpl implements UserBusService {
 
     @Autowired
     private RolePermissionRelationService rolePermissionRelationService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public LoginResultDto login(UserVO userVO) {
@@ -99,6 +103,15 @@ public class UserBusServiceImpl implements UserBusService {
         ResultDto<RegisteredUserVO> resultDto = new ResultDto<RegisteredUserVO>();
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(vo,userEntity);
+        // 判断是否修改用户密码，为空就是不修改，不为空就是修改，对明文加密
+        if(!StringUtil.isEmpty(userEntity.getPassword())){
+            userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+        }
+        //用户ID不为空，且传递过来的名文明密码为空，就需要保持原有密码有效
+        if(!StringUtil.isEmpty(vo.getId())&&vo.getId()!=0&&StringUtil.isEmpty(userEntity.getPassword())){
+            UserEntity userEntityTemp = userService.getById(vo.getId());
+            userEntity.setPassword(userEntityTemp.getPassword());
+        }
         if(!userService.saveOrUpdate(userEntity)){
             resultDto.setCode(CommonConstant.STATUS_ERROR);
             resultDto.setMessage("修改用户失败");
