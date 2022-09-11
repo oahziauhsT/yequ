@@ -16,4 +16,8 @@ public interface CommonConstant {
     String PASS_WORD = "$2a$10$/Sntcri.oeF7BE2//n2svOStLtRxLp6TqY900HFv60fBxGwNy.uiO";
 
     String TOKEN_STR = "token";
+
+    String YEQU_LOG = "yequ";
+
+    String YEQU_LOG_GROUP = "yequLogGroup";
 }

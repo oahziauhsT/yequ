@@ -4,6 +4,26 @@ spring:
     url: jdbc:mysql://localhost:3306/qishuihe?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: root
     password: root
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    template:
+      default-topic: yequ
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: yequGroup
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    properties:
+#     security:
+#        protocol: SASL_PLAINTEXT
+#      sasl:
+#        mechanism: PLAIN
+#        jaas:
+#          config: 'org.apache.kafka.common.security.scram.ScramLoginModule required username="qishuihe" password="qishuihe";'
 #主机和端口
 redis-config:
   pool:

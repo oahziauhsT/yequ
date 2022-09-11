@@ -7,6 +7,7 @@ import com.yequ.common.interfaces.outbond.login.UserVO;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +22,14 @@ public class InitBaseEntityHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         long id = snowFlake.nextId();
         this.fillStrategy(metaObject,"id",id);
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =(UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-        LoginUserVO loginUserVO =(LoginUserVO)usernamePasswordAuthenticationToken.getPrincipal();
-        this.fillStrategy(metaObject,"createBy",loginUserVO.getId());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(null!=authentication){
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =(UsernamePasswordAuthenticationToken) authentication;
+            LoginUserVO loginUserVO =(LoginUserVO)usernamePasswordAuthenticationToken.getPrincipal();
+            this.fillStrategy(metaObject,"createBy",loginUserVO.getId());
+            this.fillStrategy(metaObject,"updateBy",loginUserVO.getId());
+        }
         this.fillStrategy(metaObject,"createDate",new Date());
-        this.fillStrategy(metaObject,"updateBy",loginUserVO.getId());
         this.fillStrategy(metaObject,"updateDate",new Date());
     }
 

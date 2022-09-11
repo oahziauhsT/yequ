@@ -14,34 +14,34 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "登录接口")
 public interface ILogin {
 
-    @ApiOperation("/admin/login")
+    @ApiOperation(value = "/admin/login",notes = "用户登录")
     LoginResultDto login (UserVO vo);
 
-    @ApiOperation("/admin/logout")
+    @ApiOperation(value = "/admin/logout",notes = "用户退出")
     ResultDto<String> logout (UserVO vo);
 
-    @ApiOperation("/admin/modfiyUser")
+    @ApiOperation(value = "/admin/modfiyUser",notes = "修改用户")
     ResultDto<RegisteredUserVO> modfiyUser (RegisteredUserVO vo);
 
-    @ApiOperation("/admin/modfiyRole")
+    @ApiOperation(value = "/admin/modfiyRole",notes = "修改角色")
     ResultDto<RoleVO> modfiyRole(RoleVO roleVO);
 
-    @ApiOperation("/admin/modfiyRoleUser")
+    @ApiOperation(value = "/admin/modfiyRoleUser",notes = "修改角色用户关系")
     ResultDto<RoleUserVO> modfiyRoleUser(RoleUserVO roleUserVO);
 
-    @ApiOperation("/admin/queryUser")
+    @ApiOperation(value = "/admin/queryUser",notes = "查询用户")
     ResultPageDto<RegisteredUserVO> queryUser (QueryPageVO<RegisteredUserVO> vo);
 
-    @ApiOperation("/admin/queryRole")
+    @ApiOperation(value = "/admin/queryRole",notes = "查询角色")
     ResultPageDto<RoleVO> queryRole (QueryPageVO<RoleVO> roleVO);
 
-    @ApiOperation("/admin/queryPermission")
+    @ApiOperation(value = "/admin/queryPermission",notes = "查询权限")
     ResultPageDto<PermissionVO> queryPermission (QueryPageVO<PermissionVO> permissionVO);
 
-    @ApiOperation("/admin/modfiyRolePermission")
+    @ApiOperation(value = "/admin/modfiyRolePermission",notes = "修改角色权限关系")
     ResultDto<RolePermissionVO> modfiyRolePermission (RolePermissionVO rolePermissionVO);
 
-    @ApiOperation("/admin/modfiyPermission")
+    @ApiOperation(value = "/admin/modfiyPermission",notes = "修改权限")
     ResultDto<PermissionVO> modfiyPermission(PermissionVO PermissionVO);
 
 
