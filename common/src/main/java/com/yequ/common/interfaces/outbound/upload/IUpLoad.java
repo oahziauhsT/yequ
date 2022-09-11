@@ -1,7 +1,8 @@
-package com.yequ.common.infrastructure.upload;
+package com.yequ.common.interfaces.outbound.upload;
 
 import com.yequ.common.interfaces.outbound.dto.ResultDto;
-import com.yequ.common.interfaces.outbound.upload.FIleVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,10 +14,13 @@ import java.util.List;
  * @author: zhaost
  * @create: 2022-09-08
  **/
-public interface UpLoadService {
+@Api(tags = "通用附件上传下载接口")
+public interface IUpLoad {
 
+    @ApiOperation(value = "附件上传",notes = "/common/upLoadFiles")
     ResultDto<List<FIleVO>> upLoadFiles(MultipartFile[] files);
 
+    @ApiOperation(value = "附件下载",notes = "/common/downLoadFiles")
     void  downLoadFiles(HttpServletResponse response, List<String> fileIds) throws IOException;
-}
 
+}

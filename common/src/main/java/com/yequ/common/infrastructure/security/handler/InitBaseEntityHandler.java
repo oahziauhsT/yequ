@@ -2,8 +2,7 @@ package com.yequ.common.infrastructure.security.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.yequ.common.infrastructure.security.filter.SnowFlake;
-import com.yequ.common.interfaces.outbond.login.LoginUserVO;
-import com.yequ.common.interfaces.outbond.login.UserVO;
+import com.yequ.common.interfaces.outbound.login.LoginUserVO;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

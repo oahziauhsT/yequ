@@ -1,12 +1,12 @@
 package com.yequ.common.infrastructure.upload.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.yequ.common.domain.service.attach.AttachService;
-import com.yequ.common.domain.service.attach.entity.AttachEntity;
+import com.yequ.common.domain.attach.service.AttachService;
+import com.yequ.common.domain.attach.entity.AttachEntity;
 import com.yequ.common.infrastructure.common.CommonProperties;
 import com.yequ.common.infrastructure.upload.UpLoadService;
-import com.yequ.common.interfaces.outbond.dto.ResultDto;
-import com.yequ.common.interfaces.outbond.upload.FIleVO;
+import com.yequ.common.interfaces.outbound.dto.ResultDto;
+import com.yequ.common.interfaces.outbound.upload.FIleVO;
 import com.yequ.common.utils.CommonConstant;
 import com.yequ.common.utils.FileUtil;
 import com.yequ.common.utils.ListUtil;

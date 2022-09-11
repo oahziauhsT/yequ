@@ -1,10 +1,9 @@
 package com.yequ.common.infrastructure.security.userservice;
 
-import com.yequ.common.domain.service.user.Impl.UserServiceImpl;
-import com.yequ.common.domain.service.user.UserService;
-import com.yequ.common.domain.service.user.entity.UserEntity;
-import com.yequ.common.interfaces.outbond.login.LoginUserVO;
-import com.yequ.common.interfaces.outbond.login.UserVO;
+import com.yequ.common.domain.user.service.Impl.UserServiceImpl;
+import com.yequ.common.domain.user.entity.UserEntity;
+import com.yequ.common.interfaces.outbound.login.LoginUserVO;
+import com.yequ.common.interfaces.outbound.login.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

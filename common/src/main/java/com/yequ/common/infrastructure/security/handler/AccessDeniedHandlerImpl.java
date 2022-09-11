@@ -1,7 +1,7 @@
 package com.yequ.common.infrastructure.security.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yequ.common.interfaces.outbond.dto.BaseDto;
+import com.yequ.common.interfaces.outbound.dto.BaseDto;
 import com.yequ.common.utils.WebResponseUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;

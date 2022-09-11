@@ -1,9 +1,9 @@
 package com.yequ.common.infrastructure.aspect.log;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yequ.common.domain.service.log.entity.LogEntity;
+import com.yequ.common.domain.log.entity.LogEntity;
 import com.yequ.common.infrastructure.mq.ProductMessageHandler;
-import com.yequ.common.interfaces.outbond.login.LoginUserVO;
+import com.yequ.common.interfaces.outbound.login.LoginUserVO;
 import io.swagger.annotations.ApiOperation;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

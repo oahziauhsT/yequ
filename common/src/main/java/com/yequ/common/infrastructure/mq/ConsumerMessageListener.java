@@ -1,8 +1,8 @@
 package com.yequ.common.infrastructure.mq;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yequ.common.domain.service.log.LogService;
-import com.yequ.common.domain.service.log.entity.LogEntity;
+import com.yequ.common.domain.log.service.LogService;
+import com.yequ.common.domain.log.entity.LogEntity;
 import com.yequ.common.utils.CommonConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

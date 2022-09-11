@@ -1,9 +1,9 @@
 package com.yequ.common.application.upload;
 
 import com.yequ.common.infrastructure.upload.UpLoadService;
-import com.yequ.common.interfaces.outbond.dto.ResultDto;
-import com.yequ.common.interfaces.outbond.upload.FIleVO;
-import com.yequ.common.interfaces.outbond.upload.IUpLoad;
+import com.yequ.common.interfaces.outbound.dto.ResultDto;
+import com.yequ.common.interfaces.outbound.upload.FIleVO;
+import com.yequ.common.interfaces.outbound.upload.IUpLoad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
